@@ -52,7 +52,6 @@ input,select{width:100%;font:inherit;padding:10px 12px;border-radius:12px;border
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .res.ok{background:#173a28;color:#8fe6b4}}
 :root[data-theme="dark"] .res.ok{background:#173a28;color:#8fe6b4}
 .res ul{margin:6px 0 0;padding-inline-start:20px}
-.chip{all:unset;cursor:pointer;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:2px 14px;font-weight:700;color:var(--b1);margin:0 0 6px 6px;display:inline-block}
 .empty{color:var(--mut);text-align:center;padding:16px}
 nav{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--line);display:flex;padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));z-index:5}
 nav button{all:unset;box-sizing:border-box;flex:1;text-align:center;font-size:12px;font-weight:700;color:var(--mut);padding:4px;border-radius:12px;cursor:pointer}
@@ -64,9 +63,6 @@ nav button.on{color:var(--b1)}
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#1565c0">
-<link rel="apple-touch-icon" href="icon-192.png">
 </head>
 <body>
 <div class="app">
@@ -142,9 +138,6 @@ nav button.on{color:var(--b1)}
 
 <div class="scr" id="assist">
 <div class="bot" style="margin-top:16px"><div class="face">🤖</div><div class="bub">أهلًا بك.. كيف يمكنني مساعدتك؟</div></div>
-<div class="card"><label for="sq" style="margin-top:0">اسأل عن عرض أو دواء</label><input id="sq" placeholder="مثال: الطفل عنده سخونة وكحة"><button class="btn" id="sbtn">ابحث</button>
-<div style="margin-top:12px"><button class="chip" data-q="سخونة">سخونة</button><button class="chip" data-q="كحة">كحة</button><button class="chip" data-q="إسهال">إسهال</button><button class="chip" data-q="قيء">قيء</button><button class="chip" data-q="باراسيتامول">باراسيتامول</button><button class="chip" data-q="مضاد حيوي">مضاد حيوي</button><button class="chip" data-q="تطعيمات">تطعيمات</button></div></div>
-<div id="sres"></div>
 <button class="row" data-go="fever" style="width:100%;text-align:inherit"><span>🌡️</span><span>تقييم السخونة</span></button>
 <button class="row" data-go="doctor" style="width:100%;text-align:inherit"><span>❓</span><span>متى أذهب للطبيب؟</span></button>
 <button class="row" data-go="more" style="width:100%;text-align:inherit"><span>🩹</span><span>الإسعافات الأولية</span></button>
@@ -195,8 +188,6 @@ nav button.on{color:var(--b1)}
 <div class="card" style="margin-top:16px"><b>عن التطبيق</b><p style="margin:6px 0 0;color:var(--mut)">تطبيق توعوي لأمهات وآباء الأطفال. لا يغني عن الطبيب ولا يحدد أدوية أو جرعات.</p></div>
 <button class="btn alt" id="logout">تسجيل الخروج</button>
 <button class="btn alt" id="clear">مسح كل بياناتي</button>
-<button class="btn alt" id="delacc" style="color:var(--dg)">حذف حسابي نهائيًا</button>
-<a class="btn alt" href="privacy.html" style="margin-top:12px">سياسة الخصوصية</a>
 <div class="card" style="margin-top:28px;text-align:center"><b>معاذ عصام أحمد / مصمم التطبيق</b><p style="margin:6px 0 0;color:var(--mut)">لوجود أي مشاكل في التطبيق اتصل على:</p><a href="tel:01040074088" dir="ltr" style="display:inline-block;margin-top:4px;font-weight:800;font-size:20px;color:var(--b1);text-decoration:none">01040074088</a></div>
 </div>
 
@@ -295,44 +286,6 @@ document.getElementById('qgo').onclick=function(){
 
 document.getElementById('clear').onclick=function(){if(!uid)return;S=norm();db.ref('users/'+uid+'/data').remove().then(function(){document.getElementById('clear').textContent='تم مسح بياناتك من السيرفر'})};
 document.getElementById('logout').onclick=function(){auth.signOut()};
-document.getElementById('delacc').onclick=function(){
- var u=auth.currentUser;if(!u)return;
- if(!confirm('سيتم حذف حسابك وكل بياناتك نهائيًا ولا يمكن التراجع. هل أنت متأكد؟'))return;
- var pw=prompt('اكتب كلمة المرور لتأكيد الحذف');if(!pw)return;
- var cred=firebase.auth.EmailAuthProvider.credential(u.email,pw);
- u.reauthenticateWithCredential(cred).then(function(){return db.ref('users/'+u.uid).remove()}).then(function(){return u.delete()}).then(function(){alert('تم حذف حسابك وبياناتك')}).catch(function(e){alert(aerr(e))});
-};
-var KB=[
-{k:['سخونه','سخن','حراره','حمي'],t:'السخونة',a:['قيسي الحرارة بترمومتر وسجليها مع الوقت.','خففي الهدوم ومتغطيهوش كتير.','سوائل كتير أو رضاعة على فترات.','كمادات بماء فاتر على الجبهة، من غير ثلج أو كحول.'],d:['رضيع أقل من 3 شهور وحرارته 38 أو أكتر.','الحرارة 40 أو أكتر، أو استمرت أكتر من 3 أيام.','تشنجات، خمول شديد، أو صعوبة تنفس.','رفض الشرب أو طفح جلدي مع السخونة.']},
-{k:['كح','سعال'],t:'الكحة',a:['أغلب الكحة سببها فيروسات وبتروح لوحدها.','ترطيب هوا الأوضة وسوائل دافئة.','ابعدي الطفل عن الدخان والغبار.','أدوية الكحة للأطفال الصغار بس بعد استشارة الدكتور.'],d:['نفس سريع أو الصدر بيرجع لجوه مع النفس.','صفير أو كحة زي النباح.','زرقان في الشفايف.','استمرار الكحة أكتر من أسبوعين.']},
-{k:['زكام','برد','رشح','انفلونزا','سيلان','عطس'],t:'الزكام',a:['راحة وسوائل كتير.','غسول ملحي للأنف حسب إرشاد الصيدلي.','ترطيب الهوا وإبعاد الدخان.','غالبًا بيخف خلال 7 إلى 10 أيام.'],d:['ألم في الودن أو حرارة عالية مستمرة.','صعوبة تنفس أو رفض الرضاعة.']},
-{k:['اسهال','براز','ماشيه'],t:'الإسهال',a:['الخطر الأكبر هو الجفاف، فكملي الرضاعة والسوائل.','محلول معالجة الجفاف من الصيدلية بالتحضير المكتوب على العلبة.','كملي الأكل العادي.'],d:['مفيش بول 6 إلى 8 ساعات.','دم في البراز، أو فم ناشف وعيون غايرة.','قيء متكرر أو خمول.']},
-{k:['قيء','قيي','استفراغ','رجع','ترجيع','بيستفرغ','بيرجع'],t:'القيء',a:['استني ساعة تقريبًا، وبعدها كميات صغيرة من السوائل على فترات.','خلي راس الطفل مرفوعة شوية.'],d:['قيء أخضر أو فيه دم.','بطن منتفخة أو ألم شديد.','ضربة في الراس قبل القيء.','علامات جفاف أو خمول.']},
-{k:['مغص','الم بطن','الم البطن','وجع بطن','بطنه بتوجع'],t:'ألم البطن',a:['راحة وسوائل بكميات صغيرة.','لا تدي مسكن أو مسهل من غير استشارة الدكتور.'],d:['ألم شديد أو مستمر لساعات.','قيء متكرر أو دم في البراز.','بطن صلبة أو منتفخة.']},
-{k:['باراسيتامول','بنادول','ادول','فيفادول','سيتامول','خافض حراره','خافض الحراره'],t:'الباراسيتامول (خافض حرارة)',a:['بيخفض الحرارة ويهدي الألم، ومن أكتر الأدوية استخدامًا للأطفال.','الجرعة حسب وزن الطفل، اسألي الدكتور أو الصيدلي.','متكرريش الجرعة قبل ميعادها، ومتجمعيش منتجين فيهم نفس المادة.','استخدمي السرنجة أو الكوباية المرفقة مع الدواء بس.','رضيع أقل من 3 شهور: كلمي الدكتور الأول.'],d:['طفح أو تورم أو صعوبة تنفس بعد الدواء: طوارئ.']},
-{k:['ايبوبروفين','ابوبروفين','بروفين'],t:'الإيبوبروفين',a:['خافض حرارة ومسكن بديل.','مش للرضع أقل من 6 شهور إلا بوصفة.','يتاخد مع أكل، ومش مع جفاف أو قيء متكرر.','الجرعة حسب الوزن من الدكتور أو الصيدلي.'],d:[]},
-{k:['مضاد حيوي','مضادات حيويه','انتيبيوتيك','انتي بيوتيك','اوجمنتين','اموكسيل'],t:'المضادات الحيوية',a:['بتشتغل على البكتيريا بس، مش على الفيروسات زي أغلب الكحة والزكام.','متبدأيهاش ومتوقفيهاش من نفسك.','كملي المدة كلها زي ما الدكتور كتب.'],d:['طفح أو تورم في الوش أو صعوبة تنفس بعد الدواء.']},
-{k:['تطعيم','تطعيمات','لقاح','مصل'],t:'التطعيمات',a:['بتحمي الطفل من أمراض خطيرة.','حرارة بسيطة أو وجع مكان الحقنة بعد التطعيم أمر شائع.','اتبعي جدول وزارة الصحة والمواعيد من الوحدة الصحية أو الدكتور.'],d:['تورم في الوش أو صعوبة تنفس بعد التطعيم.','حرارة عالية جدًا أو خمول بعد التطعيم.']},
-{k:['جفاف','محلول','اورس','ors','بول قليل'],t:'الجفاف',a:['من علاماته: بول قليل، فم ناشف، دموع قليلة، وخمول.','أكملي الرضاعة والسوائل، والمحلول من الصيدلية.'],d:['لو ظهرت أكتر من علامة، كلمي الدكتور فورًا.']},
-{k:['طفح','حساسيه','حبوب','احمرار','هرش','اكزيما'],t:'الطفح والحساسية',a:['راقبي الطفل وابعدي عن أي مسبب معروف.','لا تدي دواء حساسية من غير استشارة الدكتور.'],d:['تورم في الوش أو الشفايف أو صعوبة تنفس: طوارئ.','طفح مع حرارة عالية.']},
-{k:['تسنين','سنان','لثه'],t:'التسنين',a:['لثة منتفخة ولعاب زيادة ورغبة في العض أمر شائع.','حلقة تسنين باردة (مش متجمدة) ممكن تريحه.'],d:['حرارة عالية أو إسهال شديد، غالبًا ليس سببها التسنين، فاعرضيه على دكتور.']}];
-var DG=['تنفس','زرق','تشنج','اغماء','فاقد','خمول شديد','ابتلع','تسمم','نزيف','اختناق','اتخنق'];
-var DS=['جرعه','كام ملي','ملي','ملعقه','قطره','قطرات','اديله كام','اديه كام','كميه الدوا','حقنه','حقن','لبوس'];
-function nz(x){return x.toLowerCase().replace(/[\u064B-\u0652\u0640]/g,'').replace(/[أإآ]/g,'ا').replace(/ة/g,'ه').replace(/ى/g,'ي').replace(/ؤ/g,'و').replace(/ئ/g,'ي')}
-function kcard(e){return '<div class="card"><b>'+e.t+'</b>'+e.a.map(function(x){return '<div class="ck"><b>✓</b><span>'+x+'</span></div>'}).join('')+(e.d.length?'<div class="dg" style="margin:10px 0 0"><h3>⚠️ روح للدكتور لو</h3><ul>'+e.d.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul></div>':'')+'</div>'}
-function ask(q){
- var n=nz(q);if(!n.trim())return;var out='';
- if(DG.some(function(w){return n.indexOf(nz(w))>-1}))out+='<div class="dg"><h3>🚨 الحالة دي ممكن تكون طارئة</h3><p style="margin:4px 0 0">لو طفلك عنده صعوبة تنفس أو تشنجات أو زرقان أو إغماء أو خمول شديد: اتصلي بالإسعاف 123 أو روحي أقرب طوارئ فورًا ومتستنيش.</p></div>';
- if(DS.some(function(w){return n.indexOf(nz(w))>-1}))out+='<div class="warn">التطبيق مبيحددش جرعات ولا حقن. الجرعة بتتحدد حسب وزن طفلك من الدكتور أو الصيدلي، والحقن بأمر طبيب فقط.</div>';
- var r=KB.map(function(e){var c=0;e.k.forEach(function(w){if(n.indexOf(nz(w))>-1)c++});return {e:e,c:c}}).filter(function(x){return x.c>0}).sort(function(a,b){return b.c-a.c}).slice(0,2);
- if(r.length)out+=r.map(function(x){return kcard(x.e)}).join('');
- else out+='<div class="card">ملقتش معلومة مطابقة لسؤالك. جرّبي كلمة أبسط زي: سخونة، كحة، إسهال، قيء، باراسيتامول. ولو القلق مستمر، اسألي الدكتور أو الصيدلي.</div>';
- out+='<div class="warn">معلومات عامة للتوعية، مش تشخيص ومش بديل عن الدكتور.</div>';
- var el=document.getElementById('sres');el.innerHTML=out;el.scrollIntoView({behavior:'smooth',block:'start'})}
-document.getElementById('sbtn').onclick=function(){ask(document.getElementById('sq').value)};
-document.getElementById('sq').addEventListener('keydown',function(e){if(e.key==='Enter')ask(this.value)});
-document.getElementById('assist').addEventListener('click',function(e){var c=e.target.closest('.chip');if(c){document.getElementById('sq').value=c.dataset.q;ask(c.dataset.q)}});
-if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(function(){});
 </script>
 </body>
 </html>
