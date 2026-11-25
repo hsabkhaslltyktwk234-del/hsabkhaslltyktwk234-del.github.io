@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>رعاية طفلي</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef4fc;--card:#fff;--ink:#12263f;--mut:#5d7088;--b1:#1565c0;--b2:#2f8ae6;--line:#d8e3f2;--ok:#1e9e5a;--dgBg:#fde8e6;--dg:#c0291b;--wBg:#fff3cd;--w:#7a5800;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1726;--card:#16253a;--ink:#e8f0fb;--mut:#9bb0c9;--b1:#1b5fb0;--b2:#2c7fd6;--line:#27405e;--ok:#4cd08a;--dgBg:#432220;--dg:#ffb3aa;--wBg:#3b3213;--w:#f2d77a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0d1726;--card:#16253a;--ink:#e8f0fb;--mut:#9bb0c9;--b1:#1b5fb0;--b2:#2c7fd6;--line:#27405e;--ok:#4cd08a;--dgBg:#432220;--dg:#ffb3aa;--wBg:#3b3213;--w:#f2d77a;color-scheme:dark}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Tajawal',system-ui,sans-serif;font-size:16px;line-height:1.65;padding-bottom:78px}
+.app{max-width:520px;margin:0 auto}
+.top{background:linear-gradient(160deg,var(--b1),var(--b2));color:#fff;padding:14px 16px 26px;border-radius:0 0 28px 28px;display:flex;align-items:center;gap:10px}
+.top h1{margin:0;font-size:21px;font-weight:800;flex:1;text-align:center}
+.top button{all:unset;cursor:pointer;font-size:22px;width:36px;text-align:center}
+.top button:focus-visible,.tile:focus-visible,nav button:focus-visible,.btn:focus-visible,.opt:focus-visible,.row:focus-visible{outline:3px solid #ffd54a;outline-offset:2px}
+.scr{display:none;padding:0 14px}
+.scr.on{display:block}
+.hero{background:var(--card);border-radius:22px;margin:-14px 0 14px;padding:18px 16px;text-align:center;box-shadow:0 6px 18px rgba(21,101,192,.14)}
+.hero .big{font-size:44px;line-height:1.1}
+.hero h2{margin:6px 0 2px;font-size:20px;color:var(--b1)}
+.hero p{margin:0;color:var(--mut);font-size:14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tile{all:unset;box-sizing:border-box;cursor:pointer;border-radius:20px;padding:18px 8px;text-align:center;font-weight:800;color:#12263f;display:block}
+.tile i{display:block;font-style:normal;font-size:38px;line-height:1.3}
+.t1{background:#e5d4fb}.t2{background:#cfe3fb}.t3{background:#d3f3d4}.t4{background:#ffe3b8}.t5{background:#c8f0f0}.t6{background:#ffd2dc}
+.sub{font-weight:800;font-size:18px;color:var(--b1);margin:6px 2px 12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px;margin-bottom:12px}
+.pill{background:linear-gradient(160deg,var(--b1),var(--b2));color:#fff;border-radius:14px;padding:10px 14px;font-weight:800;text-align:center;margin-bottom:12px}
+.ck{display:flex;gap:10px;align-items:flex-start;padding:6px 0}
+.ck b{color:var(--ok);font-size:20px;line-height:1.4}
+.dg{background:var(--dgBg);color:var(--dg);border-radius:16px;padding:12px 16px;margin-bottom:12px}
+.dg h3{margin:0 0 4px;font-size:17px}
+.dg ul{margin:0;padding-inline-start:20px}
+.warn{background:var(--wBg);color:var(--w);border-radius:12px;padding:10px 14px;font-size:14px;font-weight:500;margin-bottom:12px}
+label{display:block;font-weight:700;margin:12px 0 4px}
+input,select{width:100%;font:inherit;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.btn{all:unset;box-sizing:border-box;display:block;width:100%;text-align:center;background:linear-gradient(160deg,var(--b1),var(--b2));color:#fff;font-weight:800;padding:13px;border-radius:14px;margin-top:14px;cursor:pointer}
+.btn.alt{background:var(--card);color:var(--b1);border:1px solid var(--line)}
+.row{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin-bottom:10px;font-weight:700;cursor:pointer}
+.row span:first-child{font-size:24px}
+.kv{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line)}
+.kv:last-child{border:0}.kv span:first-child{color:var(--mut)}
+.bot{display:flex;gap:10px;align-items:center;margin-bottom:12px}
+.bot .face{font-size:54px}
+.bub{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:12px 14px;font-weight:700}
+.res{border-radius:16px;padding:14px 16px;margin-top:14px}
+.res.bad{background:var(--dgBg);color:var(--dg)}.res.mid{background:var(--wBg);color:var(--w)}.res.ok{background:#dff5e8;color:#14683b}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .res.ok{background:#173a28;color:#8fe6b4}}
+:root[data-theme="dark"] .res.ok{background:#173a28;color:#8fe6b4}
+.res ul{margin:6px 0 0;padding-inline-start:20px}
+.chip{all:unset;cursor:pointer;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:2px 14px;font-weight:700;color:var(--b1);margin:0 0 6px 6px;display:inline-block}
+.t7{background:#dfe6ff}.t8{background:#fff0c2}
+.chip.on{background:var(--b1);color:#fff;border-color:var(--b1)}
+.chk{display:flex;gap:10px;align-items:center;padding:6px 0;font-weight:400;margin:0}.chk input{width:22px;height:22px;padding:0;accent-color:var(--b1)}
+.empty{color:var(--mut);text-align:center;padding:16px}
+nav{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--line);display:flex;padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));z-index:5}
+nav button{all:unset;box-sizing:border-box;flex:1;text-align:center;font-size:12px;font-weight:700;color:var(--mut);padding:4px;border-radius:12px;cursor:pointer}
+nav button i{display:block;font-style:normal;font-size:22px;line-height:1.3}
+nav button.on{color:var(--b1)}
+.sym{position:relative}
+.sym.sel{outline:3px solid var(--b2)}
+</style>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1565c0">
+<link rel="apple-touch-icon" href="icon-192.png">
+</head>
+<body>
+<div class="app">
+
+<div class="top"><button id="back" aria-label="رجوع" style="visibility:hidden">→</button><h1 id="ttl">رعاية طفلي</h1><button aria-label="تنبيهات" id="bell">🔔</button></div>
+
+<div class="scr" id="auth">
+<div class="hero" style="margin-top:14px"><div class="big">👩‍⚕️🧒</div><h2>أهلًا بك في رعاية طفلي</h2><p>سجّلي الدخول لحفظ بيانات طفلك بأمان</p></div>
+<div class="card">
+<label for="ae">البريد الإلكتروني</label><input id="ae" type="email" autocomplete="email" dir="ltr">
+<label for="ap">كلمة المرور</label><input id="ap" type="password" autocomplete="current-password" dir="ltr">
+<div id="amsg" class="warn" style="display:none;margin:12px 0 0"></div>
+<button class="btn" id="alogin">تسجيل الدخول</button>
+<button class="btn alt" id="areg">إنشاء حساب جديد</button>
+<button class="btn alt" id="areset" style="border:0">نسيت كلمة المرور؟</button>
+</div>
+<div class="warn">بياناتك محفوظة على سيرفرات Google في أوروبا ولا يراها مستخدمون آخرون. التطبيق للتوعية فقط ولا يغني عن الطبيب.</div>
+</div>
+
+<div class="scr" id="home">
+<div class="hero"><div class="big">👩‍⚕️🧒</div><h2>معًا.. لصحة أفضل لطفلك ❤️</h2><p>إرشادات للتوعية وليست تشخيصًا</p></div>
+<div class="grid">
+<button class="tile t1" data-go="symptoms"><i>🌡️</i>أعراض الطفل</button>
+<button class="tile t2" data-go="profile"><i>👨‍👩‍👦</i>ملف طفلي</button>
+<button class="tile t3" data-go="meds"><i>💊</i>الأدوية</button>
+<button class="tile t4" data-go="assist"><i>🤖</i>المساعد الصحي</button>
+<button class="tile t5" data-go="doctor"><i>🩺</i>الطبيب</button>
+<button class="tile t6" data-go="more"><i>⋯</i>المزيد</button>
+<button class="tile t7" data-go="vax"><i>💉</i>التطعيمات</button>
+<button class="tile t8" id="kshare2"><i>📤</i>مشاركة مع الدكتور</button>
+</div>
+<div class="warn" style="margin-top:14px">التطبيق لا يشخّص المرض ولا يحدد جرعات. أي دواء للأطفال بوصفة طبيب أطفال فقط.</div>
+</div>
+
+<div class="scr" id="symptoms">
+<div class="sub" style="margin-top:16px">اختر العرض الذي يعاني منه طفلك</div>
+<div class="grid" id="symgrid"></div>
+</div>
+
+<div class="scr" id="symd">
+<div class="hero" id="symhero" style="margin-top:14px"></div>
+<div class="pill">إرشادات مهمة</div>
+<div class="card" id="symtips"></div>
+<div class="dg"><h3>⚠️ متى تذهب للطبيب؟</h3><ul id="symdg"></ul></div>
+<button class="btn" id="symAssist">تقييم سريع مع المساعد الصحي</button>
+</div>
+
+<div class="scr" id="vax"><div id="vxlist"></div></div>
+
+<div class="scr" id="profile">
+<div id="kbar" style="margin-top:14px"></div>
+<div class="hero" style="margin-top:14px"><div class="big" id="pav">🧒</div><h2 id="pname">أضف بيانات طفلك</h2></div>
+<div class="card" id="pview"></div>
+<button class="btn" id="pedit">تحديث البيانات</button>
+<button class="btn alt" id="kshare">مشاركة ملخص مع الدكتور (واتساب)</button>
+<button class="btn alt" id="kdel" style="color:var(--dg)">حذف هذا الطفل</button>
+<div class="card" id="pform" style="display:none;margin-top:12px">
+<label for="f1">الاسم</label><input id="f1">
+<label for="f2">العمر (بالسنوات)</label><input id="f2" type="number" min="0" max="15" step="0.5">
+<label for="f3">الوزن (كجم)</label><input id="f3" type="number" min="1" max="100" step="0.1">
+<label for="f4">الطول (سم)</label><input id="f4" type="number" min="30" max="200">
+<label for="f5">الحساسية المعروفة</label><input id="f5" placeholder="مثال: بنسلين، أو لا يوجد">
+<label for="f6">أمراض مزمنة</label><input id="f6" placeholder="لا يوجد">
+<label for="f7">أدوية حالية</label><input id="f7" placeholder="لا يوجد">
+<label for="f8">تاريخ الميلاد</label><input id="f8" type="date">
+<button class="btn" id="psave">حفظ</button>
+</div>
+</div>
+
+<div class="scr" id="meds">
+<div class="warn" style="margin-top:16px">اكتب فقط الأدوية التي وصفها الطبيب، بالاسم والموعد كما في الروشتة. التطبيق لا يقترح أدوية ولا جرعات.</div>
+<div class="card">
+<label for="m1">اسم الدواء (من الروشتة)</label><input id="m1">
+<label for="m2">الجرعة كما كتبها الطبيب</label><input id="m2">
+<label for="m3">كل كم ساعة؟</label><input id="m3" type="number" min="1" max="24">
+<button class="btn" id="madd">إضافة تذكير</button>
+</div>
+<div class="sub">أدويتي</div>
+<div id="mlist"></div>
+</div>
+
+<div class="scr" id="assist">
+<div class="bot" style="margin-top:16px"><div class="face">🤖</div><div class="bub">أهلًا بك.. كيف يمكنني مساعدتك؟</div></div>
+<div class="card"><label for="sq" style="margin-top:0">اسأل عن عرض أو دواء</label><input id="sq" placeholder="مثال: الطفل عنده سخونة وكحة"><button class="btn" id="sbtn">ابحث</button>
+<div style="margin-top:12px"><button class="chip" data-q="سخونة">سخونة</button><button class="chip" data-q="كحة">كحة</button><button class="chip" data-q="إسهال">إسهال</button><button class="chip" data-q="قيء">قيء</button><button class="chip" data-q="باراسيتامول">باراسيتامول</button><button class="chip" data-q="مضاد حيوي">مضاد حيوي</button><button class="chip" data-q="تطعيمات">تطعيمات</button></div>
+<details style="margin-top:8px"><summary style="font-weight:700;color:var(--b1);cursor:pointer">كل المواضيع</summary><div id="tp" style="margin-top:8px"></div></details></div>
+<div id="sres"></div>
+<button class="row" data-go="fever" style="width:100%;text-align:inherit"><span>🌡️</span><span>تقييم السخونة</span></button>
+<button class="row" data-go="doctor" style="width:100%;text-align:inherit"><span>❓</span><span>متى أذهب للطبيب؟</span></button>
+<button class="row" data-go="more" style="width:100%;text-align:inherit"><span>🩹</span><span>الإسعافات الأولية</span></button>
+<button class="row" data-go="symptoms" style="width:100%;text-align:inherit"><span>💡</span><span>نصائح عامة لصحة الطفل</span></button>
+</div>
+
+<div class="scr" id="fever">
+<div class="card" style="margin-top:16px">
+<label for="q1">عمر الطفل</label>
+<select id="q1"><option value="0">أقل من 3 شهور</option><option value="1" selected>3 شهور إلى سنتين</option><option value="2">أكثر من سنتين</option></select>
+<label for="q2">درجة الحرارة</label><input id="q2" type="number" step="0.1" min="34" max="43" placeholder="38.5">
+<label for="q3">بدأت السخونة من</label>
+<select id="q3"><option value="0">أقل من يوم</option><option value="1" selected>1 إلى 3 أيام</option><option value="2">أكثر من 3 أيام</option></select>
+<label for="q4">هل يشرب سوائل؟</label>
+<select id="q4"><option value="1">نعم</option><option value="0">لا أو قليل جدًا</option></select>
+<label for="q5">هل عنده صعوبة تنفس أو خمول شديد؟</label>
+<select id="q5"><option value="0">لا</option><option value="1">نعم</option></select>
+<button class="btn" id="qgo">عرض الإرشادات</button>
+</div>
+<div id="qres"></div>
+</div>
+
+<div class="scr" id="doctor">
+<div class="dg" style="margin-top:16px"><h3>🚨 توجه للطوارئ فورًا</h3><ul><li>صعوبة في التنفس أو لون أزرق حول الشفايف.</li><li>تشنجات أو إغماء.</li><li>خمول شديد وصعوبة في إيقاظ الطفل.</li><li>رضيع أقل من 3 شهور مع حرارة 38 أو أكثر.</li></ul></div>
+<div class="card"><b>🚑 الإسعاف في مصر: 123</b></div>
+<div class="pill">راجع الطبيب في نفس اليوم إذا</div>
+<div class="card"><div class="ck"><b>•</b>استمرت السخونة أكثر من 3 أيام.</div><div class="ck"><b>•</b>رفض الشرب أو قلة التبول.</div><div class="ck"><b>•</b>قيء متكرر أو إسهال مع علامات جفاف.</div><div class="ck"><b>•</b>ألم بطن شديد أو طفح جلدي مع السخونة.</div></div>
+</div>
+
+<div class="scr" id="more">
+<div class="sub" style="margin-top:16px">إسعافات أولية آمنة</div>
+<div class="card"><b>🔥 حروق بسيطة</b><div class="ck"><b>✓</b>ماء جاري بارد (ليس ثلج) لمدة 10 دقائق.</div><div class="ck"><b>✓</b>غطه بشاش نظيف ولا تفقع الفقاعات.</div></div>
+<div class="card"><b>🩸 جرح أو نزيف</b><div class="ck"><b>✓</b>اضغط بقماشة نظيفة لعدة دقائق.</div><div class="ck"><b>✓</b>اغسل الجرح بماء وصابون بعد وقف النزيف.</div></div>
+<div class="card"><b>👃 نزيف الأنف</b><div class="ck"><b>✓</b>الجلوس مع الميل للأمام، وضغط الجزء اللين من الأنف 10 دقائق.</div></div>
+<div class="card"><b>😮 اختناق</b><div class="ck"><b>✓</b>اطلب الإسعاف 123 فورًا وتعلم الإسعافات من مختص.</div></div>
+<div class="warn">الحالات الشديدة تحتاج طوارئ، ولا تعطِ دواء من نفسك.</div>
+</div>
+
+<div class="scr" id="log">
+<div class="card" style="margin-top:16px">
+<label for="l1">درجة الحرارة اليوم</label><input id="l1" type="number" step="0.1" min="34" max="43">
+<label for="l2">ملاحظات</label><input id="l2" placeholder="مثال: كحة خفيفة">
+<button class="btn" id="ladd">تسجيل</button></div>
+<div id="lchart"></div><div class="sub">آخر القياسات</div><div id="llist"></div>
+</div>
+
+<div class="scr" id="settings">
+<div class="card" style="margin-top:16px"><b>عن التطبيق</b><p style="margin:6px 0 0;color:var(--mut)">تطبيق توعوي لأمهات وآباء الأطفال. لا يغني عن الطبيب ولا يحدد أدوية أو جرعات.</p></div>
+<button class="btn alt" id="logout">تسجيل الخروج</button>
+<button class="btn alt" id="clear">مسح كل بياناتي</button>
+<button class="btn alt" id="delacc" style="color:var(--dg)">حذف حسابي نهائيًا</button>
+<a class="btn alt" href="privacy.html" style="margin-top:12px">سياسة الخصوصية</a>
+<div class="card" style="margin-top:28px;text-align:center"><b>معاذ عصام أحمد / مصمم التطبيق</b><p style="margin:6px 0 0;color:var(--mut)">لوجود أي مشاكل في التطبيق اتصل على:</p><a href="tel:01040074088" dir="ltr" style="display:inline-block;margin-top:4px;font-weight:800;font-size:20px;color:var(--b1);text-decoration:none">01040074088</a></div>
+</div>
+
+</div>
+
+<nav>
+<button class="on" data-go="home"><i>🏠</i>الرئيسية</button>
+<button data-go="log"><i>❤️</i>سجل الصحة</button>
+<button data-go="settings"><i>👤</i>حسابي</button>
+</nav>
+
+<script>
+var cfg={apiKey:"AIzaSyDpcj7Ft9Xin13FC0svGbqp9I965K2grjY",authDomain:"rayet-tefly-2.firebaseapp.com",databaseURL:"https://rayet-tefly-2-default-rtdb.europe-west1.firebasedatabase.app",projectId:"rayet-tefly-2",appId:"1:619546608303:web:318eed1bd91963bbe0ca5a"};
+firebase.initializeApp(cfg);
+var auth=firebase.auth(),db=firebase.database(),uid=null;
+function norm(d){d=d||{};var k=d.kids;if(!k||!k.length)k=[Object.assign({id:1},d.profile||{})];
+ k=k.map(function(x,i){x.id=x.id||(i+1);x.vax=x.vax||{};return x});
+ return {kids:k,cur:Math.min(d.cur||0,k.length-1),meds:d.meds||[],log:d.log||[]}}
+var S=norm();
+function kid(){return S.kids[S.cur]}
+function mine(a){var id=kid().id;return a.map(function(x,i){return {x:x,i:i}}).filter(function(o){return (o.x.k||1)===id})}
+function save(){if(!uid)return;db.ref('users/'+uid+'/data').set(S).catch(function(){alert('تعذر الحفظ، تأكد من الاتصال بالإنترنت')})}
+function aerr(e){var m={'auth/invalid-email':'الإيميل غير صحيح','auth/invalid-credential':'الإيميل أو كلمة المرور غير صحيحة','auth/user-not-found':'الإيميل غير مسجل','auth/wrong-password':'كلمة المرور غير صحيحة','auth/email-already-in-use':'الإيميل مسجل بالفعل، جرّبي تسجيل الدخول','auth/weak-password':'كلمة المرور ضعيفة، استخدمي 6 حروف أو أرقام على الأقل','auth/network-request-failed':'تأكدي من الاتصال بالإنترنت','auth/too-many-requests':'محاولات كثيرة، حاولي بعد قليل','auth/missing-password':'اكتبي كلمة المرور','auth/missing-email':'اكتبي الإيميل'};return m[e&&e.code]||('حدث خطأ، حاولي مرة أخرى. رمز الخطأ: '+((e&&(e.code||e.message))||'غير معروف'))}
+function amsg(t){var a=document.getElementById('amsg');a.textContent=t;a.style.display=t?'block':'none'}
+function creds(){return [document.getElementById('ae').value.trim(),document.getElementById('ap').value]}
+document.getElementById('alogin').onclick=function(){amsg('');var c=creds();auth.signInWithEmailAndPassword(c[0],c[1]).catch(function(e){amsg(aerr(e))})};
+document.getElementById('areg').onclick=function(){amsg('');var c=creds();auth.createUserWithEmailAndPassword(c[0],c[1]).catch(function(e){amsg(aerr(e))})};
+document.getElementById('areset').onclick=function(){amsg('');var c=creds();if(!c[0]){amsg('اكتبي الإيميل أولًا');return}auth.sendPasswordResetEmail(c[0]).then(function(){amsg('تم إرسال رابط إعادة تعيين كلمة المرور لإيميلك')}).catch(function(e){amsg(aerr(e))})};
+auth.onAuthStateChanged(function(u){
+ if(u){uid=u.uid;db.ref('users/'+uid+'/data').get().then(function(sn){S=norm(sn.val())}).catch(function(){S=norm()}).then(function(){stack=['home'];show('home',false)})}
+ else{uid=null;S=norm();stack=['auth'];show('auth',false)}
+});
+var T={vax:'التطعيمات',auth:'رعاية طفلي',home:'رعاية طفلي',symptoms:'الأعراض',symd:'',profile:'ملف طفلي',meds:'الأدوية',assist:'المساعد الصحي',fever:'تقييم السخونة',doctor:'الطبيب',more:'المزيد',log:'سجل الصحة',settings:'حسابي'};
+var stack=['home'];
+function show(id,push){
+ if(push!==false&&stack[stack.length-1]!==id)stack.push(id);
+ document.querySelectorAll('.scr').forEach(function(s){s.classList.toggle('on',s.id===id)});
+ if(T[id])document.getElementById('ttl').textContent=T[id];
+ document.getElementById('back').style.visibility=(id==='home'||id==='auth')?'hidden':'visible';
+ document.querySelector('nav').style.display=id==='auth'?'none':'flex';
+ document.querySelectorAll('nav button').forEach(function(b){b.classList.toggle('on',b.dataset.go===id)});
+ if(id==='profile')renderProfile();if(id==='meds')renderMeds();if(id==='log')renderLog();if(id==='vax')renderVax();
+ window.scrollTo(0,0);
+}
+document.addEventListener('click',function(e){var g=e.target.closest('[data-go]');if(g){if(g.closest('nav'))stack=['home'];show(g.dataset.go)}});
+document.getElementById('back').onclick=function(){if(stack.length>1)stack.pop();show(stack[stack.length-1],false)};
+document.getElementById('bell').onclick=function(){show('meds')};
+
+var SY=[
+{k:'v',n:'القيء',e:'🤢',t:['انتظر ساعة تقريبًا ثم ابدأ بكميات صغيرة من السوائل.','كرر الكميات الصغيرة على فترات.','أبقِ رأس الطفل مرفوعًا قليلًا.'],d:['قيء أخضر أو به دم.','علامات جفاف أو خمول.','بطن منتفخة أو ألم شديد.']},
+{k:'f',n:'السخونة',e:'🌡️',t:['قس الحرارة بترمومتر وسجلها.','اخلع الملابس الزائدة ولا تغطه كثيرًا.','أعطه سوائل دافئة أو ماء كثيرًا.','استخدم كمادات بماء فاتر على الجبهة.','خافض الحرارة بعد استشارة الطبيب فقط حسب العمر والوزن.'],d:['استمرت السخونة أكثر من 3 أيام.','ظهرت صعوبة في التنفس.','كان الطفل خاملًا أو يرفض الشرب.','رضيع أقل من 3 شهور وحرارته 38 أو أكثر.']},
+{k:'s',n:'ألم البطن',e:'🤕',t:['اجعله يرتاح وراقب مكان الألم.','سوائل بكميات صغيرة.','لا تعطه مسكنًا أو مسهلًا دون استشارة.'],d:['ألم شديد أو مستمر أكثر من ساعات.','قيء متكرر أو دم في البراز.','بطن صلبة أو منتفخة.']},
+{k:'c',n:'الزكام',e:'🤧',t:['سوائل دافئة وراحة.','غسول ملحي للأنف حسب إرشادات الصيدلي.','رطب هواء الغرفة وابعد الدخان.'],d:['صعوبة في التنفس.','حرارة عالية مستمرة.','ألم أذن أو استمرار أكثر من 10 أيام.']},
+{k:'d',n:'الإسهال',e:'💧',t:['الجفاف هو الخطر، فأكمل الرضاعة والسوائل.','محلول معالجة الجفاف من الصيدلية بالتحضير المكتوب على العلبة.','استمر في الأكل العادي.'],d:['لا يتبول لمدة 6 إلى 8 ساعات.','فم ناشف وعيون غائرة.','دم في البراز أو قيء متكرر.']},
+{k:'k',n:'الكحة',e:'😷',t:['سوائل دافئة وترطيب الهواء.','ابعد الطفل عن الدخان والغبار.','لا تستخدم أدوية الكحة دون استشارة الطبيب.'],d:['تنفس سريع أو الصدر يغوص مع النفس.','صفير أو كحة نباحية.','زرقة في الشفايف.','استمرار أكثر من أسبوعين.']}];
+var cur=null;
+var sg=document.getElementById('symgrid');
+SY.forEach(function(s,i){var b=document.createElement('button');b.className='tile sym t'+(i%6+1);b.innerHTML='<i>'+s.e+'</i>'+s.n;b.onclick=function(){cur=s;
+ document.getElementById('symhero').innerHTML='<div class="big">'+s.e+'</div><h2>'+s.n+'</h2>';
+ document.getElementById('symtips').innerHTML=s.t.map(function(x){return '<div class="ck"><b>✓</b><span>'+x+'</span></div>'}).join('');
+ document.getElementById('symdg').innerHTML=s.d.map(function(x){return '<li>'+x+'</li>'}).join('');
+ document.getElementById('symAssist').style.display=s.k==='f'?'block':'none';
+ T.symd=s.n;show('symd')};sg.appendChild(b)});
+document.getElementById('symAssist').onclick=function(){show('fever')};
+
+function esc(x){return String(x==null?'':x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function ageTxt(p){if(p.dob){var m=Math.floor((Date.now()-new Date(p.dob))/2629800000);if(m<0)return '—';return m<24?m+' شهر':Math.floor(m/12)+' سنة'}return p.a?p.a+' سنوات':'—'}
+function kidsBar(){document.getElementById('kbar').innerHTML=S.kids.map(function(k,i){return '<button class="chip kb'+(i===S.cur?' on':'')+'" data-k="'+i+'">'+esc(k.n||('طفل '+(i+1)))+'</button>'}).join('')+'<button class="chip" id="kadd">+ إضافة طفل</button>'}
+function renderProfile(){var p=kid();kidsBar();
+ document.getElementById('pname').textContent=p.n||'أضف بيانات طفلك';
+ var rows=[['العمر',ageTxt(p)],['الوزن',p.w?p.w+' كجم':'—'],['الطول',p.h?p.h+' سم':'—'],['الحساسية',p.al||'—'],['أمراض مزمنة',p.ch||'—'],['أدوية حالية',p.md||'—']];
+ document.getElementById('pview').innerHTML=rows.map(function(r){return '<div class="kv"><span>'+r[0]+'</span><span>'+esc(r[1])+'</span></div>'}).join('');
+ document.getElementById('kdel').style.display=S.kids.length>1?'block':'none'}
+function openForm(){var p=kid(),f=document.getElementById('pform');f.style.display='block';
+ ['n','a','w','h','al','ch','md','dob'].forEach(function(k,i){document.getElementById('f'+(i+1)).value=p[k]||''});f.scrollIntoView({behavior:'smooth'})}
+document.getElementById('pedit').onclick=openForm;
+document.getElementById('psave').onclick=function(){var v=function(i){return document.getElementById('f'+i).value.trim()};
+ Object.assign(kid(),{n:v(1),a:v(2),w:v(3),h:v(4),al:v(5),ch:v(6),md:v(7),dob:v(8)});save();document.getElementById('pform').style.display='none';renderProfile()};
+function shareDoc(){var p=kid(),t=['ملخص حالة الطفل (من تطبيق رعاية طفلي)','الاسم: '+(p.n||'—'),'العمر: '+ageTxt(p),'الوزن: '+(p.w?p.w+' كجم':'—'),'الطول: '+(p.h?p.h+' سم':'—'),'الحساسية: '+(p.al||'—'),'أمراض مزمنة: '+(p.ch||'—'),'أدوية حالية: '+(p.md||'—')];
+ var m=mine(S.meds);if(m.length)t.push('أدوية الروشتة: '+m.map(function(o){return o.x.n+' '+(o.x.d||'')+' كل '+o.x.h+' ساعات'}).join('، '));
+ var l=mine(S.log).slice(-5);if(l.length)t.push('آخر قياسات الحرارة: '+l.map(function(o){return o.x.t+'° ('+o.x.d+')'}).join('، '));
+ window.open('https://wa.me/?text='+encodeURIComponent(t.join('\n')),'_blank')}
+document.getElementById('kshare2').onclick=shareDoc;
+document.getElementById('profile').addEventListener('click',function(e){
+ var b=e.target.closest('.kb');if(b){S.cur=+b.dataset.k;save();document.getElementById('pform').style.display='none';renderProfile();return}
+ if(e.target.id==='kadd'){S.kids.push({id:Date.now(),vax:{}});S.cur=S.kids.length-1;save();renderProfile();openForm();return}
+ if(e.target.id==='kdel'){if(confirm('حذف هذا الطفل وكل بياناته؟')){var id=kid().id;S.kids.splice(S.cur,1);S.cur=0;S.meds=S.meds.filter(function(x){return (x.k||1)!==id});S.log=S.log.filter(function(x){return (x.k||1)!==id});save();renderProfile()}return}
+ if(e.target.id==='kshare')shareDoc()});
+var VX=[{m:0,l:'عند الولادة',i:['الالتهاب الكبدي B (خلال 24 ساعة)','شلل الأطفال بالفم (الجرعة 0)','الدرن BCG']},
+{m:2,l:'عمر شهرين',i:['شلل الأطفال بالفم (1)','التطعيم الخماسي (1)','شلل الأطفال بالحقن سولك (1)']},
+{m:4,l:'عمر 4 شهور',i:['شلل الأطفال بالفم (2)','التطعيم الخماسي (2)','شلل الأطفال بالحقن (2)']},
+{m:6,l:'عمر 6 شهور',i:['شلل الأطفال بالفم (3)','التطعيم الخماسي (3)','شلل الأطفال بالحقن (3)']},
+{m:9,l:'عمر 9 شهور',i:['شلل الأطفال بالفم (4)']},
+{m:12,l:'عمر 12 شهر',i:['شلل الأطفال بالفم (5)','الثلاثي الفيروسي MMR: حصبة ونكاف وحصبة ألماني (1)']},
+{m:18,l:'عمر 18 شهر',i:['شلل الأطفال بالفم (جرعة منشطة)','الثلاثي الفيروسي MMR (2)','الثلاثي البكتيري المنشط: دفتيريا وتيتانوس وسعال ديكي']}];
+function renderVax(){var p=kid(),el=document.getElementById('vxlist');
+ var h='<div class="warn" style="margin-top:16px">الجدول القومي المجاني حسب وزارة الصحة المصرية، والمواعيد تقريبية. أكدي التواريخ من الوحدة الصحية أو الدكتور، وفيه تطعيمات اختيارية يحددها دكتورك.</div><div class="sub" style="margin-top:0">'+esc(p.n||'الطفل')+'</div>';
+ if(!p.dob)h+='<div class="dg"><h3>أدخلي تاريخ الميلاد</h3>من «ملف طفلي» عشان نحسب المواعيد.</div>';
+ VX.forEach(function(g){var d=null;if(p.dob){d=new Date(p.dob);d.setMonth(d.getMonth()+g.m)}
+  var done=g.i.every(function(_,j){return p.vax&&p.vax[g.m+'_'+j]}),late=d&&!done&&d<new Date();
+  h+='<div class="card"><b>'+g.l+'</b>'+(d?' <span style="color:'+(late?'var(--dg)':'var(--mut)')+'">'+(done?'تم ✓':(late?'متأخر: ':'موعد: ')+d.toLocaleDateString('ar-EG'))+'</span>':'')+g.i.map(function(t,j){var k=g.m+'_'+j;return '<label class="chk"><input type="checkbox" data-vk="'+k+'"'+(p.vax&&p.vax[k]?' checked':'')+'><span>'+t+'</span></label>'}).join('')+'</div>'});
+ el.innerHTML=h}
+document.getElementById('vax').addEventListener('change',function(e){var k=e.target.dataset.vk;if(!k)return;var p=kid();p.vax=p.vax||{};if(e.target.checked)p.vax[k]=1;else delete p.vax[k];save();renderVax()});
+function renderMeds(){var el=document.getElementById('mlist'),ms=mine(S.meds);
+ if(!ms.length){el.innerHTML='<div class="empty">لا توجد تذكيرات للطفل: '+esc(kid().n||'')+'</div>';return}
+ el.innerHTML=ms.map(function(o){var m=o.x;return '<div class="card"><b>💊 '+esc(m.n)+'</b><div style="color:var(--mut)">'+esc(m.d)+'</div><div>⏰ كل '+esc(m.h)+' ساعات</div><button class="btn alt" data-del="'+o.i+'" style="margin-top:8px;padding:8px">حذف</button></div>'}).join('')}
+document.getElementById('madd').onclick=function(){var n=m1.value.trim(),d=m2.value.trim(),h=m3.value.trim();if(!n||!h)return;
+ S.meds.push({k:kid().id,n:n,d:d,h:h});save();m1.value=m2.value=m3.value='';renderMeds()};
+document.getElementById('mlist').onclick=function(e){var b=e.target.closest('[data-del]');if(b){S.meds.splice(+b.dataset.del,1);save();renderMeds()}};
+function chart(v){if(v.length<2)return '';var W=300,H=120,lo=36,hi=41;
+ var x=function(i){return 20+i*(W-30)/(v.length-1)},y=function(t){t=Math.max(lo,Math.min(hi,t));return H-15-(t-lo)/(hi-lo)*(H-30)};
+ return '<div class="card"><b>منحنى الحرارة</b><svg viewBox="0 0 300 120" width="100%" role="img" aria-label="منحنى الحرارة"><line x1="20" x2="290" y1="'+y(38)+'" y2="'+y(38)+'" stroke="var(--dg)" stroke-dasharray="4 3" stroke-width="1"/><text x="2" y="'+(y(38)+3)+'" font-size="9" fill="var(--dg)">38</text><polyline points="'+v.map(function(t,i){return x(i)+','+y(t)}).join(' ')+'" fill="none" stroke="var(--b2)" stroke-width="2"/>'+v.map(function(t,i){return '<circle cx="'+x(i)+'" cy="'+y(t)+'" r="3" fill="var(--b1)"/>'}).join('')+'</svg></div>'}
+function renderLog(){var el=document.getElementById('llist'),ls=mine(S.log);
+ document.getElementById('lchart').innerHTML=chart(ls.slice(-12).map(function(o){return o.x.t}));
+ if(!ls.length){el.innerHTML='<div class="empty">لم يتم تسجيل قياسات بعد.</div>';return}
+ el.innerHTML=ls.slice().reverse().map(function(o){var x=o.x,hi=x.t>=38;return '<div class="card"><b style="color:'+(hi?'var(--dg)':'var(--ok)')+'">🌡️ '+esc(x.t)+'°</b> <span style="color:var(--mut)">'+esc(x.d)+'</span>'+(x.n?'<div>'+esc(x.n)+'</div>':'')+'</div>'}).join('')}
+document.getElementById('ladd').onclick=function(){var t=parseFloat(l1.value);if(isNaN(t))return;
+ S.log.push({k:kid().id,t:t,n:l2.value.trim(),d:new Date().toLocaleString('ar-EG',{dateStyle:'short',timeStyle:'short'})});S.log=S.log.slice(-80);save();l1.value=l2.value='';renderLog()};
+document.getElementById('qgo').onclick=function(){
+ var age=+q1.value,t=parseFloat(q2.value),dur=+q3.value,dr=+q4.value,br=+q5.value,bad=[],mid=[];
+ if(br)bad.push('صعوبة التنفس أو الخمول الشديد حالة طوارئ: توجه لأقرب طوارئ أو اتصل بـ 123.');
+ if(age===0&&t>=38)bad.push('رضيع أقل من 3 شهور مع حرارة 38 أو أكثر يحتاج كشفًا عاجلًا.');
+ if(t>=40)bad.push('الحرارة 40 أو أكثر: راجع الطبيب اليوم.');
+ if(dur===2)mid.push('السخونة أكثر من 3 أيام: يلزم كشف عند الطبيب.');
+ if(!dr)mid.push('قلة الشرب قد تؤدي للجفاف: راجع الطبيب اليوم.');
+ var cls='ok',title='يمكن المتابعة في المنزل مع المراقبة',items=['سوائل كثيرة وملابس خفيفة.','قس الحرارة كل بضع ساعات وسجلها في سجل الصحة.','أي خافض حرارة أو جرعة: استشر الطبيب أو الصيدلي حسب وزن طفلك.','لو ظهرت علامات الخطر، توجه للطبيب.'];
+ if(bad.length){cls='bad';title='يلزم تقييم طبي عاجل';items=bad.concat(mid)}else if(mid.length){cls='mid';title='يُنصح بزيارة الطبيب';items=mid}
+ if(!isNaN(t)&&t>=34){S.log.push({k:kid().id,t:t,n:'من تقييم السخونة',d:new Date().toLocaleString('ar-EG',{dateStyle:'short',timeStyle:'short'})});S.log=S.log.slice(-30);save()}
+ var r=document.getElementById('qres');r.innerHTML='<div class="res '+cls+'"><b>'+title+'</b><ul>'+items.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul><p style="margin:8px 0 0;font-size:13px">هذا تقييم عام وليس تشخيصًا.</p></div>';r.scrollIntoView({behavior:'smooth',block:'nearest'})};
+
+document.getElementById('clear').onclick=function(){if(!uid)return;S=norm();db.ref('users/'+uid+'/data').remove().then(function(){document.getElementById('clear').textContent='تم مسح بياناتك من السيرفر'})};
+document.getElementById('logout').onclick=function(){auth.signOut()};
+document.getElementById('delacc').onclick=function(){
+ var u=auth.currentUser;if(!u)return;
+ if(!confirm('سيتم حذف حسابك وكل بياناتك نهائيًا ولا يمكن التراجع. هل أنت متأكد؟'))return;
+ var pw=prompt('اكتب كلمة المرور لتأكيد الحذف');if(!pw)return;
+ var cred=firebase.auth.EmailAuthProvider.credential(u.email,pw);
+ u.reauthenticateWithCredential(cred).then(function(){return db.ref('users/'+u.uid).remove()}).then(function(){return u.delete()}).then(function(){alert('تم حذف حسابك وبياناتك')}).catch(function(e){alert(aerr(e))});
+};
+var KB=[
+{k:['سخونه','سخن','حراره','حمي'],t:'السخونة',a:['قيسي الحرارة بترمومتر وسجليها مع الوقت.','خففي الهدوم ومتغطيهوش كتير.','سوائل كتير أو رضاعة على فترات.','كمادات بماء فاتر على الجبهة، من غير ثلج أو كحول.'],d:['رضيع أقل من 3 شهور وحرارته 38 أو أكتر.','الحرارة 40 أو أكتر، أو استمرت أكتر من 3 أيام.','تشنجات، خمول شديد، أو صعوبة تنفس.','رفض الشرب أو طفح جلدي مع السخونة.']},
+{k:['كح','سعال'],t:'الكحة',a:['أغلب الكحة سببها فيروسات وبتروح لوحدها.','ترطيب هوا الأوضة وسوائل دافئة.','ابعدي الطفل عن الدخان والغبار.','أدوية الكحة للأطفال الصغار بس بعد استشارة الدكتور.'],d:['نفس سريع أو الصدر بيرجع لجوه مع النفس.','صفير أو كحة زي النباح.','زرقان في الشفايف.','استمرار الكحة أكتر من أسبوعين.']},
+{k:['زكام','برد','رشح','انفلونزا','سيلان','عطس'],t:'الزكام',a:['راحة وسوائل كتير.','غسول ملحي للأنف حسب إرشاد الصيدلي.','ترطيب الهوا وإبعاد الدخان.','غالبًا بيخف خلال 7 إلى 10 أيام.'],d:['ألم في الودن أو حرارة عالية مستمرة.','صعوبة تنفس أو رفض الرضاعة.']},
+{k:['اسهال','براز','ماشيه'],t:'الإسهال',a:['الخطر الأكبر هو الجفاف، فكملي الرضاعة والسوائل.','محلول معالجة الجفاف من الصيدلية بالتحضير المكتوب على العلبة.','كملي الأكل العادي.'],d:['مفيش بول 6 إلى 8 ساعات.','دم في البراز، أو فم ناشف وعيون غايرة.','قيء متكرر أو خمول.']},
+{k:['قيء','قيي','استفراغ','رجع','ترجيع','بيستفرغ','بيرجع'],t:'القيء',a:['استني ساعة تقريبًا، وبعدها كميات صغيرة من السوائل على فترات.','خلي راس الطفل مرفوعة شوية.'],d:['قيء أخضر أو فيه دم.','بطن منتفخة أو ألم شديد.','ضربة في الراس قبل القيء.','علامات جفاف أو خمول.']},
+{k:['مغص','الم بطن','الم البطن','وجع بطن','بطنه بتوجع'],t:'ألم البطن',a:['راحة وسوائل بكميات صغيرة.','لا تدي مسكن أو مسهل من غير استشارة الدكتور.'],d:['ألم شديد أو مستمر لساعات.','قيء متكرر أو دم في البراز.','بطن صلبة أو منتفخة.']},
+{k:['باراسيتامول','بنادول','ادول','فيفادول','سيتامول','خافض حراره','خافض الحراره'],t:'الباراسيتامول (خافض حرارة)',a:['بيخفض الحرارة ويهدي الألم، ومن أكتر الأدوية استخدامًا للأطفال.','الجرعة حسب وزن الطفل، اسألي الدكتور أو الصيدلي.','متكرريش الجرعة قبل ميعادها، ومتجمعيش منتجين فيهم نفس المادة.','استخدمي السرنجة أو الكوباية المرفقة مع الدواء بس.','رضيع أقل من 3 شهور: كلمي الدكتور الأول.'],d:['طفح أو تورم أو صعوبة تنفس بعد الدواء: طوارئ.']},
+{k:['ايبوبروفين','ابوبروفين','بروفين'],t:'الإيبوبروفين',a:['خافض حرارة ومسكن بديل.','مش للرضع أقل من 6 شهور إلا بوصفة.','يتاخد مع أكل، ومش مع جفاف أو قيء متكرر.','الجرعة حسب الوزن من الدكتور أو الصيدلي.'],d:[]},
+{k:['مضاد حيوي','مضادات حيويه','انتيبيوتيك','انتي بيوتيك','اوجمنتين','اموكسيل'],t:'المضادات الحيوية',a:['بتشتغل على البكتيريا بس، مش على الفيروسات زي أغلب الكحة والزكام.','متبدأيهاش ومتوقفيهاش من نفسك.','كملي المدة كلها زي ما الدكتور كتب.'],d:['طفح أو تورم في الوش أو صعوبة تنفس بعد الدواء.']},
+{k:['تطعيم','تطعيمات','لقاح','مصل'],t:'التطعيمات',a:['بتحمي الطفل من أمراض خطيرة.','حرارة بسيطة أو وجع مكان الحقنة بعد التطعيم أمر شائع.','اتبعي جدول وزارة الصحة والمواعيد من الوحدة الصحية أو الدكتور.'],d:['تورم في الوش أو صعوبة تنفس بعد التطعيم.','حرارة عالية جدًا أو خمول بعد التطعيم.']},
+{k:['جفاف','محلول','اورس','ors','بول قليل'],t:'الجفاف',a:['من علاماته: بول قليل، فم ناشف، دموع قليلة، وخمول.','أكملي الرضاعة والسوائل، والمحلول من الصيدلية.'],d:['لو ظهرت أكتر من علامة، كلمي الدكتور فورًا.']},
+{k:['طفح','حساسيه','حبوب','احمرار','هرش','اكزيما'],t:'الطفح والحساسية',a:['راقبي الطفل وابعدي عن أي مسبب معروف.','لا تدي دواء حساسية من غير استشارة الدكتور.'],d:['تورم في الوش أو الشفايف أو صعوبة تنفس: طوارئ.','طفح مع حرارة عالية.']},
+{k:['تسنين','سنان','لثه'],t:'التسنين',a:['لثة منتفخة ولعاب زيادة ورغبة في العض أمر شائع.','حلقة تسنين باردة (مش متجمدة) ممكن تريحه.'],d:['حرارة عالية أو إسهال شديد، غالبًا ليس سببها التسنين، فاعرضيه على دكتور.']},
+{k:['رضاعه طبيعيه','رضاعه','بزاز','لبن الام','ترضعي'],t:'الرضاعة الطبيعية',a:['الرضاعة الطبيعية وحدها كافية غالبًا في أول 6 شهور.','ارضعيه عند طلبه، ومفيش حاجة اسمها كتير في الأسابيع الأولى.','علامة إنه شبعان: حفاضات مبللة كتير يوميًا (حوالي 6 أو أكتر بعد الأسبوع الأول) وزيادة في الوزن.'],d:['قلة الحفاضات المبللة أو نقص الوزن.','رفض الرضاعة أو خمول شديد.','اصفرار يزيد في الجلد.']},
+{k:['رضاعه صناعيه','لبن صناعي','علبه لبن','بيبرون','زجاجه','لبن بودره'],t:'الرضاعة الصناعية',a:['حضّري اللبن بالنسب المكتوبة على العلبة بالظبط، من غير زيادة في المسحوق.','عقّمي الزجاجة والحلمة، واستخدمي ماء مغلي ومبرد.','متغيّريش نوع اللبن من نفسك، استشيري الدكتور.'],d:['قيء متكرر أو إسهال بعد تغيير اللبن.','طفح أو صعوبة تنفس بعد الرضعة.']},
+{k:['فطام','بدايه الاكل','اكل اضافي','ياكل ايه','اطعمه','سيريلاك','شوربه'],t:'بدء الأكل (الفطام)',a:['بداية الأكل الإضافي غالبًا حوالي 6 شهور، وبالتدريج.','صنف جديد واحد كل كام يوم، وراقبي أي رد فعل.','متدّيش عسل قبل سنة، ومن غير ملح أو سكر زيادة.','قطعي الأكل لقطع صغيرة آمنة عشان ميتخنقش.'],d:['تورم الوش أو طفح أو قيء مباشرة بعد صنف جديد.','صعوبة تنفس.']},
+{k:['نوم','ينام','ميعرفش ينام','سرير','صحيان'],t:'نوم الطفل',a:['الرضيع ينام على ضهره على سطح ثابت.','من غير مخدات أو بطاطين تقيلة أو ألعاب في السرير.','روتين ثابت قبل النوم بيساعد الكبار منه.'],d:['توقف تنفس أو زرقان أثناء النوم.','نوم زيادة عن المعتاد وصعوبة إيقاظه.']},
+{k:['مغص رضع','مغص الرضع','بكاء','بيعيط','عياط','غازات'],t:'البكاء ومغص الرضع',a:['البكاء الكتير في الأسابيع الأولى شائع.','جرّبي التجشؤ بعد الرضعة، وحضنه، وتغيير الوضع.','اتأكدي من الحفاضة والجوع والحرارة الأول.'],d:['بكاء مع حرارة أو قيء أخضر.','رفض الرضاعة أو بطن منتفخة.','بكاء مستمر ومش بيهدى بأي حاجة.']},
+{k:['امساك','ميخرجش','صعوبه في الاخراج','بيزق'],t:'الإمساك',a:['سوائل كتير، وأكل فيه ألياف للأطفال اللي بيأكلوا.','متدّيش ملين أو لبوس من غير استشارة الدكتور.','روتين مواعيد الحمام بيساعد.'],d:['دم في البراز أو ألم شديد.','قيء أو انتفاخ في البطن.']},
+{k:['تسلخ','حفاضه','حفاض','احمرار المنطقه'],t:'تسلخات الحفاض',a:['غيّري الحفاضة بسرعة بعد التبول والتبرز.','نظفي بماء فاتر وجففي برفق قبل الحفاضة الجديدة.','سيبيه بدون حفاضة شوية على فترات.','كريم الوقاية من الصيدلية ممكن يفيد.'],d:['بثور أو صديد أو حرارة.','مفيش تحسن بعد كام يوم.']},
+{k:['صفراء','يرقان','اصفرار'],t:'الصفراء عند المولود',a:['شائعة في الأيام الأولى وغالبًا بتتحسن.','ارضعيه كويس ومتأخريش الرضعات.','الدكتور هو اللي يقرر لو محتاج تحليل أو علاج.'],d:['الاصفرار بيزيد أو وصل للبطن والرجلين.','خمول أو رفض الرضاعة.','بول غامق أو براز فاتح.']},
+{k:['وقع','ضربه في الراس','خبطه في الراس','وقع على راسه','راسه'],t:'ضربة في الراس',a:['كمادة باردة على مكان الضربة.','راقبيه ساعات وبعدها 24 ساعة، واجعليه مرتاح.'],d:['فقدان وعي أو تشنجات.','قيء متكرر أو نعاس شديد.','سيلان دم أو سائل من الأنف أو الودن.','تورم كبير أو تغيّر في تصرفاته.']},
+{k:['حرق','اتحرق','ماء سخن','شاي','زيت سخن','نار'],t:'الحروق البسيطة',a:['ماء جاري بارد (مش ثلج) 10 دقايق على الأقل.','غطّيه بشاش نظيف، ومتفقعيش الفقاقيع.','متحطيش معجون أسنان أو زبدة أو أي حاجة على الحرق.'],d:['حرق كبير أو في الوش أو الإيدين أو المناطق الحساسة.','فقاقيع كبيرة أو جلد أبيض أو أسود.','طفل رضيع.']},
+{k:['اختناق','اتخنق','بلع حاجه','لقمه واقفه','حاجه صغيره'],t:'الاختناق وابتلاع جسم غريب',a:['ابعدي الأشياء الصغيرة والبطاريات والحبوب عنه.','متحاوليش تدخلي صباعك في بقه لو مش شايفة الجسم.','اتصلي بالإسعاف 123 فورًا.','اتعلمي الإسعافات الأولية للاختناق من مختص.'],d:['مش قادر يتنفس أو يعيط أو يكح.','زرقان في الوش.']},
+{k:['تسمم','شرب كلور','شرب منظف','بلع دوا','بلع حبوب','بنزين'],t:'ابتلاع دواء أو مادة سامة',a:['اتصلي بالإسعاف 123 أو روحي أقرب طوارئ فورًا.','خدي العبوة معاكي عشان الدكتور يعرف المادة والكمية.','متحاوليش تخليه يستفرغ ومتديهوش حاجة إلا بتعليمات الطوارئ.'],d:['أي ابتلاع لدواء أو منظف أو مادة غير معروفة يعتبر طارئ.']},
+{k:['حبل سري','السره','سره','الحبل'],t:'العناية بالحبل السري',a:['خليه نظيف وجاف، وطي الحفاضة تحته.','متحطيش عليه حاجة من نفسك.','غالبًا بيقع خلال أسبوع إلى 3 أسابيع.'],d:['احمرار حواليه أو صديد أو ريحة وحشة.','نزيف أو حرارة.']},
+{k:['حمام','استحمام','تحميم'],t:'حمام الطفل',a:['ماء دافئ (مش سخن)، 5 إلى 10 دقايق.','متسيبيهوش لوحده لحظة واحدة.','جففيه كويس خصوصًا في ثنايا الجلد.'],d:[]},
+{k:['شمس','حراره الجو','ضربه شمس','صيف'],t:'الشمس والحر',a:['ابعدي الرضع عن الشمس المباشرة.','هدوم قطن خفيفة وسوائل كتير.','متسيبيهوش في عربية مقفولة أبدًا.'],d:['خمول أو جلد ساخن وناشف.','حرارة عالية بعد التعرض للحر: طوارئ.']},
+{k:['لدغه','قرصه','نمله','دبور','نحله','عقرب','تعبان','حشره','بعوضه'],t:'لدغات الحشرات',a:['اغسلي مكان اللدغة بماء وصابون، وكمادة باردة.','راقبي أي تورم أو رد فعل.'],d:['تورم في الوش أو صعوبة تنفس.','لدغة عقرب أو ثعبان: طوارئ فورًا.','احمرار بيزيد أو حرارة.']},
+{k:['وجع ودن','ودنه','التهاب الاذن','اذن'],t:'وجع الودن',a:['وجع الودن مع الزكام شائع.','متحطيش نقط أو زيوت من غير دكتور.','كمادة دافئة برفق على الودن ممكن تريحه.'],d:['حرارة عالية أو سيلان صديد.','مفيش تحسن خلال يومين.']},
+{k:['زور','لوزتين','التهاب الحلق','صعوبه بلع','حلقه'],t:'وجع الحلق',a:['سوائل دافئة وراحة.','الطفل الصغير ممكن يرفض الأكل، قدّمي حاجات ناعمة.'],d:['صعوبة بلع أو لعاب كتير.','حرارة عالية أو طفح.','وجع مستمر أكتر من 3 أيام.']},
+{k:['اسنان','تسوس','فرشه','معجون','سنانه'],t:'العناية بالأسنان',a:['نظفي أسنانه بفرشة ناعمة ومعجون فيه فلورايد.','كمية صغيرة جدًا (بحجم حبة الأرز) تحت 3 سنين.','متنوميهوش بالرضاعة، وأول زيارة لدكتور أسنان في أول سنة.'],d:['وجع شديد أو تورم في الوش أو اللثة.']},
+{k:['حساسيه اكل','حساسيه الاكل','حساسيه لبن','بيض','فول سوداني'],t:'الحساسية الغذائية',a:['أدخلي الأصناف الجديدة واحد واحد.','لو في حساسية معروفة، تجنبي المسبب تمامًا.','اقري المكونات على العبوات.'],d:['تورم الوش أو الشفايف أو صعوبة تنفس: طوارئ.','قيء متكرر أو طفح كبير بعد الأكل مباشرة.']},
+{k:['مش بياكل','مش عايز ياكل','شهيه','قله الاكل','بيرفض الاكل'],t:'قلة الشهية',a:['وجبات صغيرة ومتنوعة، ومن غير إجبار.','قللي العصائر والسناكس قبل الوجبات.','خليه ياكل مع العيلة على مائدة هادية.'],d:['فقدان وزن أو رفض الشرب.','خمول أو حرارة مع قلة الأكل.']},
+{k:['وزن','طول','نمو','نحيف','سمين','منحني'],t:'الوزن والنمو',a:['كل طفل له معدل نمو مختلف.','الدكتور بيتابع الوزن والطول على منحنى النمو.','التغذية المتوازنة والنوم الكافي أهم حاجة.'],d:['توقف الزيادة أو نقص في الوزن.','تأخر ملحوظ في الجلوس أو المشي أو الكلام.']},
+{k:['عدوي','غسيل ايد','كورونا','انفلونزا موسميه','نظافه'],t:'الوقاية من العدوى',a:['غسل الإيدين بالماء والصابون كتير، خصوصًا قبل الأكل.','ابعدي الطفل عن المرضى قدر الإمكان.','التزمي بمواعيد التطعيمات.'],d:[]},
+{k:['كسر','التواء','وقع على ايده','رجله','ورم'],t:'الكسر والالتواء',a:['ثبّتي العضو من غير تحريك أو محاولة تعديله.','كمادة باردة ملفوفة في قماشة، مش على الجلد مباشرة.','روحي الطوارئ للتأكد.'],d:['تشوه ظاهر أو ألم شديد.','مش بيحرك العضو أو بقي لونه أزرق.']},
+{k:['رعاف','نزيف الانف','دم من الانف','نزف انف'],t:'نزيف الأنف',a:['اجعليه يجلس ويميل للأمام (مش لورا).','اضغطي على الجزء اللين من الأنف 10 دقايق من غير ما تسيبي.'],d:['النزيف أكتر من 20 دقيقة.','بعد ضربة قوية أو مع كدمات.']}
+];
+var DG=['تنفس','زرق','تشنج','اغماء','فاقد','خمول شديد','ابتلع','تسمم','نزيف شديد','اختناق','اتخنق'];
+var DS=['جرعه','كام ملي','ملي','ملعقه','قطره','قطرات','اديله كام','اديه كام','كميه الدوا','حقنه','حقن','لبوس'];
+function nz(x){return x.toLowerCase().replace(/[\u064B-\u0652\u0640]/g,'').replace(/[أإآ]/g,'ا').replace(/ة/g,'ه').replace(/ى/g,'ي').replace(/ؤ/g,'و').replace(/ئ/g,'ي')}
+function kcard(e){return '<div class="card"><b>'+e.t+'</b>'+e.a.map(function(x){return '<div class="ck"><b>✓</b><span>'+x+'</span></div>'}).join('')+(e.d.length?'<div class="dg" style="margin:10px 0 0"><h3>⚠️ روح للدكتور لو</h3><ul>'+e.d.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul></div>':'')+'</div>'}
+function ask(q){
+ var n=nz(q);if(!n.trim())return;var out='';
+ if(DG.some(function(w){return n.indexOf(nz(w))>-1}))out+='<div class="dg"><h3>🚨 الحالة دي ممكن تكون طارئة</h3><p style="margin:4px 0 0">لو طفلك عنده صعوبة تنفس أو تشنجات أو زرقان أو إغماء أو خمول شديد: اتصلي بالإسعاف 123 أو روحي أقرب طوارئ فورًا ومتستنيش.</p></div>';
+ if(DS.some(function(w){return n.indexOf(nz(w))>-1}))out+='<div class="warn">التطبيق مبيحددش جرعات ولا حقن. الجرعة بتتحدد حسب وزن طفلك من الدكتور أو الصيدلي، والحقن بأمر طبيب فقط.</div>';
+ var r=KB.map(function(e){var c=0;e.k.forEach(function(w){if(n.indexOf(nz(w))>-1)c++});return {e:e,c:c}}).filter(function(x){return x.c>0}).sort(function(a,b){return b.c-a.c}).slice(0,2);
+ if(r.length)out+=r.map(function(x){return kcard(x.e)}).join('');
+ else out+='<div class="card">ملقتش معلومة مطابقة لسؤالك. جرّبي كلمة أبسط زي: سخونة، كحة، إسهال، قيء، باراسيتامول. ولو القلق مستمر، اسألي الدكتور أو الصيدلي.</div>';
+ out+='<div class="warn">معلومات عامة للتوعية، مش تشخيص ومش بديل عن الدكتور.</div>';
+ var el=document.getElementById('sres');el.innerHTML=out;el.scrollIntoView({behavior:'smooth',block:'start'})}
+document.getElementById('sbtn').onclick=function(){ask(document.getElementById('sq').value)};
+document.getElementById('sq').addEventListener('keydown',function(e){if(e.key==='Enter')ask(this.value)});
+var tp=document.getElementById('tp');KB.forEach(function(e,i){var b=document.createElement('button');b.className='chip tp';b.dataset.i=i;b.textContent=e.t;tp.appendChild(b)});
+document.getElementById('assist').addEventListener('click',function(e){var c=e.target.closest('.chip');if(!c)return;
+ if(c.classList.contains('tp')){var el=document.getElementById('sres');el.innerHTML=kcard(KB[+c.dataset.i])+'<div class="warn">معلومات عامة للتوعية، مش تشخيص ومش بديل عن الدكتور.</div>';el.scrollIntoView({behavior:'smooth',block:'start'});return}
+ document.getElementById('sq').value=c.dataset.q;ask(c.dataset.q)});
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(function(){});
+</script>
+</body>
+</html>
