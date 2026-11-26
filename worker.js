@@ -65,8 +65,11 @@ export default {
       body: JSON.stringify({ idToken: token }),
     });
     if (!who.ok) return reply({ error: "auth" }, 401, origin);
-    const uid = ((await who.json()).users || [])[0]?.localId;
+    const user = ((await who.json()).users || [])[0];
+    const uid = user?.localId;
     if (!uid) return reply({ error: "auth" }, 401, origin);
+    // الحسابات المجهولة (بدون إيميل) مش مسموح لها بالمساعد الذكي
+    if (!(user.providerUserInfo || []).length) return reply({ error: "link" }, 200, origin);
 
     // 2) الحد اليومي لكل مستخدمة
     const day = new Date().toISOString().slice(0, 10);

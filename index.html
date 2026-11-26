@@ -56,6 +56,9 @@ input,select{width:100%;font:inherit;padding:10px 12px;border-radius:12px;border
 .t7{background:#dfe6ff}.t8{background:#fff0c2}
 .chip.on{background:var(--b1);color:#fff;border-color:var(--b1)}
 .chk{display:flex;gap:10px;align-items:center;padding:6px 0;font-weight:400;margin:0}.chk input{width:22px;height:22px;padding:0;accent-color:var(--b1)}
+.cb{border-radius:16px;padding:10px 14px;margin:8px 0;max-width:92%;white-space:pre-wrap;line-height:1.7}
+.cu{background:var(--b1);color:#fff;margin-inline-start:auto}
+.cbot{background:var(--card);border:1px solid var(--line)}
 .empty{color:var(--mut);text-align:center;padding:16px}
 nav{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--line);display:flex;padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));z-index:5}
 nav button{all:unset;box-sizing:border-box;flex:1;text-align:center;font-size:12px;font-weight:700;color:var(--mut);padding:4px;border-radius:12px;cursor:pointer}
@@ -77,7 +80,9 @@ nav button.on{color:var(--b1)}
 <div class="top"><button id="back" aria-label="رجوع" style="visibility:hidden">→</button><h1 id="ttl">رعاية طفلي</h1><button aria-label="تنبيهات" id="bell">🔔</button></div>
 
 <div class="scr" id="auth">
-<div class="hero" style="margin-top:14px"><div class="big">👩‍⚕️🧒</div><h2>أهلًا بك في رعاية طفلي</h2><p>سجّلي الدخول لحفظ بيانات طفلك بأمان</p></div>
+<div class="hero" style="margin-top:14px"><div class="big">👩‍⚕️🧒</div><h2>أهلًا بك في رعاية طفلي</h2><p>ابدئي بدون تسجيل، وتقدري تربطي حساب بعدين</p></div>
+<button class="btn" id="aanon" style="margin:0 0 12px;font-size:19px">ابدأ بدون حساب 🚀</button>
+<div style="text-align:center;color:var(--mut);margin:4px 0 10px">أو سجّلي دخول بحساب موجود</div>
 <div class="card">
 <label for="ae">البريد الإلكتروني</label><input id="ae" type="email" autocomplete="email" dir="ltr">
 <label for="ap">كلمة المرور</label><input id="ap" type="password" autocomplete="current-password" dir="ltr">
@@ -115,6 +120,12 @@ nav button.on{color:var(--b1)}
 <div class="card" id="symtips"></div>
 <div class="dg"><h3>⚠️ متى تذهب للطبيب؟</h3><ul id="symdg"></ul></div>
 <button class="btn" id="symAssist">تقييم سريع مع المساعد الصحي</button>
+</div>
+
+<div class="scr" id="ai">
+<div class="warn" style="margin-top:16px"><b>أنت بتتكلمي مع ذكاء اصطناعي، مش دكتور.</b> بيدّي معلومات عامة للتوعية بس، ومبيشخّصش حالة طفلك ولا بيحدد أدوية أو جرعات. في الطوارئ اتصلي بـ 123. متكتبيش اسم طفلك أو بيانات شخصية.</div>
+<div id="ailog"></div>
+<div class="card"><input id="aiq" maxlength="500" placeholder="اسألي سؤال عام عن صحة الطفل"><button class="btn" id="aisend">إرسال</button><div id="airem" style="color:var(--mut);font-size:14px;margin-top:8px">عندك 5 أسئلة في اليوم</div></div>
 </div>
 
 <div class="scr" id="vax"><div id="vxlist"></div></div>
@@ -157,6 +168,7 @@ nav button.on{color:var(--b1)}
 <div style="margin-top:12px"><button class="chip" data-q="سخونة">سخونة</button><button class="chip" data-q="كحة">كحة</button><button class="chip" data-q="إسهال">إسهال</button><button class="chip" data-q="قيء">قيء</button><button class="chip" data-q="باراسيتامول">باراسيتامول</button><button class="chip" data-q="مضاد حيوي">مضاد حيوي</button><button class="chip" data-q="تطعيمات">تطعيمات</button></div>
 <details style="margin-top:8px"><summary style="font-weight:700;color:var(--b1);cursor:pointer">كل المواضيع</summary><div id="tp" style="margin-top:8px"></div></details></div>
 <div id="sres"></div>
+<button class="row" data-go="ai" style="width:100%;text-align:inherit"><span>✨</span><span>اسأل الذكاء الاصطناعي (معلومات عامة)</span></button>
 <button class="row" data-go="fever" style="width:100%;text-align:inherit"><span>🌡️</span><span>تقييم السخونة</span></button>
 <button class="row" data-go="doctor" style="width:100%;text-align:inherit"><span>❓</span><span>متى أذهب للطبيب؟</span></button>
 <button class="row" data-go="more" style="width:100%;text-align:inherit"><span>🩹</span><span>الإسعافات الأولية</span></button>
@@ -205,6 +217,7 @@ nav button.on{color:var(--b1)}
 
 <div class="scr" id="settings">
 <div class="card" style="margin-top:16px"><b>عن التطبيق</b><p style="margin:6px 0 0;color:var(--mut)">تطبيق توعوي لأمهات وآباء الأطفال. لا يغني عن الطبيب ولا يحدد أدوية أو جرعات.</p></div>
+<div class="card" id="lnk" style="display:none"><b>⚠️ أنتِ بدون حساب</b><p style="margin:6px 0;color:var(--mut)">بياناتك محفوظة على هذا الجهاز فقط. اربطي إيميل وكلمة سر عشان ما تضيعش لو مسحتي بيانات المتصفح أو غيّرتي الموبايل، وعشان تستخدمي المساعد الذكي.</p><label for="le">البريد الإلكتروني</label><input id="le" type="email" dir="ltr"><label for="lp">كلمة المرور (6 على الأقل)</label><input id="lp" type="password" dir="ltr"><div id="lmsg" class="warn" style="display:none;margin:10px 0 0"></div><button class="btn" id="lbtn">ربط الحساب</button></div>
 <button class="btn alt" id="logout">تسجيل الخروج</button>
 <button class="btn alt" id="clear">مسح كل بياناتي</button>
 <button class="btn alt" id="delacc" style="color:var(--dg)">حذف حسابي نهائيًا</button>
@@ -231,17 +244,18 @@ var S=norm();
 function kid(){return S.kids[S.cur]}
 function mine(a){var id=kid().id;return a.map(function(x,i){return {x:x,i:i}}).filter(function(o){return (o.x.k||1)===id})}
 function save(){if(!uid)return;db.ref('users/'+uid+'/data').set(S).catch(function(){alert('تعذر الحفظ، تأكد من الاتصال بالإنترنت')})}
-function aerr(e){var m={'auth/invalid-email':'الإيميل غير صحيح','auth/invalid-credential':'الإيميل أو كلمة المرور غير صحيحة','auth/user-not-found':'الإيميل غير مسجل','auth/wrong-password':'كلمة المرور غير صحيحة','auth/email-already-in-use':'الإيميل مسجل بالفعل، جرّبي تسجيل الدخول','auth/weak-password':'كلمة المرور ضعيفة، استخدمي 6 حروف أو أرقام على الأقل','auth/network-request-failed':'تأكدي من الاتصال بالإنترنت','auth/too-many-requests':'محاولات كثيرة، حاولي بعد قليل','auth/missing-password':'اكتبي كلمة المرور','auth/missing-email':'اكتبي الإيميل'};return m[e&&e.code]||('حدث خطأ، حاولي مرة أخرى. رمز الخطأ: '+((e&&(e.code||e.message))||'غير معروف'))}
+function aerr(e){var m={'auth/invalid-email':'الإيميل غير صحيح','auth/invalid-credential':'الإيميل أو كلمة المرور غير صحيحة','auth/user-not-found':'الإيميل غير مسجل','auth/wrong-password':'كلمة المرور غير صحيحة','auth/email-already-in-use':'الإيميل مسجل بالفعل، جرّبي تسجيل الدخول','auth/weak-password':'كلمة المرور ضعيفة، استخدمي 6 حروف أو أرقام على الأقل','auth/network-request-failed':'تأكدي من الاتصال بالإنترنت','auth/too-many-requests':'محاولات كثيرة، حاولي بعد قليل','auth/missing-password':'اكتبي كلمة المرور','auth/missing-email':'اكتبي الإيميل','auth/operation-not-allowed':'الدخول بدون حساب لسه مش متفعّل في Firebase','auth/credential-already-in-use':'الإيميل ده مرتبط بحساب تاني','auth/requires-recent-login':'سجّلي دخول تاني وجرّبي'};return m[e&&e.code]||('حدث خطأ، حاولي مرة أخرى. رمز الخطأ: '+((e&&(e.code||e.message))||'غير معروف'))}
 function amsg(t){var a=document.getElementById('amsg');a.textContent=t;a.style.display=t?'block':'none'}
 function creds(){return [document.getElementById('ae').value.trim(),document.getElementById('ap').value]}
 document.getElementById('alogin').onclick=function(){amsg('');var c=creds();auth.signInWithEmailAndPassword(c[0],c[1]).catch(function(e){amsg(aerr(e))})};
 document.getElementById('areg').onclick=function(){amsg('');var c=creds();auth.createUserWithEmailAndPassword(c[0],c[1]).catch(function(e){amsg(aerr(e))})};
 document.getElementById('areset').onclick=function(){amsg('');var c=creds();if(!c[0]){amsg('اكتبي الإيميل أولًا');return}auth.sendPasswordResetEmail(c[0]).then(function(){amsg('تم إرسال رابط إعادة تعيين كلمة المرور لإيميلك')}).catch(function(e){amsg(aerr(e))})};
+document.getElementById('aanon').onclick=function(){amsg('');auth.signInAnonymously().catch(function(e){amsg(aerr(e))})};
 auth.onAuthStateChanged(function(u){
  if(u){uid=u.uid;db.ref('users/'+uid+'/data').get().then(function(sn){S=norm(sn.val())}).catch(function(){S=norm()}).then(function(){stack=['home'];show('home',false)})}
  else{uid=null;S=norm();stack=['auth'];show('auth',false)}
 });
-var T={vax:'التطعيمات',auth:'رعاية طفلي',home:'رعاية طفلي',symptoms:'الأعراض',symd:'',profile:'ملف طفلي',meds:'الأدوية',assist:'المساعد الصحي',fever:'تقييم السخونة',doctor:'الطبيب',more:'المزيد',log:'سجل الصحة',settings:'حسابي'};
+var T={ai:'المساعد الذكي',vax:'التطعيمات',auth:'رعاية طفلي',home:'رعاية طفلي',symptoms:'الأعراض',symd:'',profile:'ملف طفلي',meds:'الأدوية',assist:'المساعد الصحي',fever:'تقييم السخونة',doctor:'الطبيب',more:'المزيد',log:'سجل الصحة',settings:'حسابي'};
 var stack=['home'];
 function show(id,push){
  if(push!==false&&stack[stack.length-1]!==id)stack.push(id);
@@ -250,7 +264,7 @@ function show(id,push){
  document.getElementById('back').style.visibility=(id==='home'||id==='auth')?'hidden':'visible';
  document.querySelector('nav').style.display=id==='auth'?'none':'flex';
  document.querySelectorAll('nav button').forEach(function(b){b.classList.toggle('on',b.dataset.go===id)});
- if(id==='profile')renderProfile();if(id==='meds')renderMeds();if(id==='log')renderLog();if(id==='vax')renderVax();
+ if(id==='profile')renderProfile();if(id==='meds')renderMeds();if(id==='log')renderLog();if(id==='vax')renderVax();if(id==='settings'){var cu=auth.currentUser;document.getElementById('lnk').style.display=(cu&&cu.isAnonymous)?'block':'none'}
  window.scrollTo(0,0);
 }
 document.addEventListener('click',function(e){var g=e.target.closest('[data-go]');if(g){if(g.closest('nav'))stack=['home'];show(g.dataset.go)}});
@@ -340,13 +354,17 @@ document.getElementById('qgo').onclick=function(){
  var r=document.getElementById('qres');r.innerHTML='<div class="res '+cls+'"><b>'+title+'</b><ul>'+items.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul><p style="margin:8px 0 0;font-size:13px">هذا تقييم عام وليس تشخيصًا.</p></div>';r.scrollIntoView({behavior:'smooth',block:'nearest'})};
 
 document.getElementById('clear').onclick=function(){if(!uid)return;S=norm();db.ref('users/'+uid+'/data').remove().then(function(){document.getElementById('clear').textContent='تم مسح بياناتك من السيرفر'})};
-document.getElementById('logout').onclick=function(){auth.signOut()};
+document.getElementById('logout').onclick=function(){var u=auth.currentUser;if(u&&u.isAnonymous&&!confirm('أنتِ بدون حساب. لو خرجتي هتفقدي بيانات طفلك نهائيًا. اربطي إيميل الأول. تخرجي برضه؟'))return;auth.signOut()};
+document.getElementById('lbtn').onclick=function(){var u=auth.currentUser,m=document.getElementById('lmsg');m.style.display='none';if(!u)return;
+ var cred=firebase.auth.EmailAuthProvider.credential(document.getElementById('le').value.trim(),document.getElementById('lp').value);
+ u.linkWithCredential(cred).then(function(){document.getElementById('lnk').style.display='none';alert('تم ربط حسابك. بياناتك بقت محفوظة بأمان.')}).catch(function(e){m.textContent=aerr(e);m.style.display='block'})};
 document.getElementById('delacc').onclick=function(){
  var u=auth.currentUser;if(!u)return;
  if(!confirm('سيتم حذف حسابك وكل بياناتك نهائيًا ولا يمكن التراجع. هل أنت متأكد؟'))return;
+ var go=function(){return db.ref('users/'+u.uid).remove().then(function(){return u.delete()}).then(function(){alert('تم حذف حسابك وبياناتك')},function(e){if(u.isAnonymous){auth.signOut();alert('تم مسح بياناتك')}else alert(aerr(e))})};
+ if(u.isAnonymous){go();return}
  var pw=prompt('اكتب كلمة المرور لتأكيد الحذف');if(!pw)return;
- var cred=firebase.auth.EmailAuthProvider.credential(u.email,pw);
- u.reauthenticateWithCredential(cred).then(function(){return db.ref('users/'+u.uid).remove()}).then(function(){return u.delete()}).then(function(){alert('تم حذف حسابك وبياناتك')}).catch(function(e){alert(aerr(e))});
+ u.reauthenticateWithCredential(firebase.auth.EmailAuthProvider.credential(u.email,pw)).then(go).catch(function(e){alert(aerr(e))})
 };
 var KB=[
 {k:['سخونه','سخن','حراره','حمي'],t:'السخونة',a:['قيسي الحرارة بترمومتر وسجليها مع الوقت.','خففي الهدوم ومتغطيهوش كتير.','سوائل كتير أو رضاعة على فترات.','كمادات بماء فاتر على الجبهة، من غير ثلج أو كحول.'],d:['رضيع أقل من 3 شهور وحرارته 38 أو أكتر.','الحرارة 40 أو أكتر، أو استمرت أكتر من 3 أيام.','تشنجات، خمول شديد، أو صعوبة تنفس.','رفض الشرب أو طفح جلدي مع السخونة.']},
@@ -407,6 +425,30 @@ var tp=document.getElementById('tp');KB.forEach(function(e,i){var b=document.cre
 document.getElementById('assist').addEventListener('click',function(e){var c=e.target.closest('.chip');if(!c)return;
  if(c.classList.contains('tp')){var el=document.getElementById('sres');el.innerHTML=kcard(KB[+c.dataset.i])+'<div class="warn">معلومات عامة للتوعية، مش تشخيص ومش بديل عن الدكتور.</div>';el.scrollIntoView({behavior:'smooth',block:'start'});return}
  document.getElementById('sq').value=c.dataset.q;ask(c.dataset.q)});
+var AI_URL='';
+var aiHist=[];
+function aiAdd(role,text){var d=document.createElement('div');d.className='cb '+(role==='user'?'cu':'cbot');d.textContent=text;var l=document.getElementById('ailog');l.appendChild(d);d.scrollIntoView({block:'end',behavior:'smooth'});return d}
+function aiSend(){
+ var inp=document.getElementById('aiq'),q=inp.value.trim();if(!q)return;
+ if(!AI_URL){aiAdd('bot','المساعد الذكي لسه مش متفعّل. استخدمي البحث في «المساعد الصحي» دلوقتي.');return}
+ var u=auth.currentUser;if(!u)return;
+ if(u.isAnonymous){aiAdd('bot','عشان تستخدمي المساعد الذكي لازم تربطي إيميل من «حسابي» الأول.');return}
+ inp.value='';aiAdd('user',q);
+ var n=nz(q);if(DG.some(function(w){return n.indexOf(nz(w))>-1}))aiAdd('bot','🚨 لو في صعوبة تنفس أو تشنجات أو زرقان أو إغماء أو خمول شديد، اتصلي بالإسعاف 123 أو روحي أقرب طوارئ فورًا.');
+ var wait=aiAdd('bot','...'),btn=document.getElementById('aisend');btn.disabled=true;
+ u.getIdToken().then(function(tok){return fetch(AI_URL,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+tok},body:JSON.stringify({question:q,history:aiHist.slice(-4)})})})
+ .then(function(r){return r.json()})
+ .then(function(j){
+  if(j.answer){wait.textContent=j.answer+'\n\n(ذكاء اصطناعي: معلومات عامة وليست تشخيصًا)';aiHist.push({role:'user',content:q},{role:'assistant',content:j.answer})}
+  else if(j.error==='limit')wait.textContent='خلصتي أسئلة النهارده. ممكن تسألي بكرة، أو استخدمي البحث في «المساعد الصحي».';
+  else if(j.error==='link')wait.textContent='اربطي إيميل من «حسابي» الأول عشان تستخدمي المساعد الذكي.';
+  else if(j.error==='busy')wait.textContent='المساعد مشغول النهارده. جرّبي بكرة، أو استخدمي البحث في «المساعد الصحي».';
+  else wait.textContent='حصلت مشكلة مؤقتة، حاولي كمان شوية.';
+  if(typeof j.remaining==='number')document.getElementById('airem').textContent='باقي لك '+j.remaining+' أسئلة النهارده'})
+ .catch(function(){wait.textContent='تأكدي من الاتصال بالإنترنت وحاولي تاني.'})
+ .then(function(){btn.disabled=false})}
+document.getElementById('aisend').onclick=aiSend;
+document.getElementById('aiq').addEventListener('keydown',function(e){if(e.key==='Enter')aiSend()});
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(function(){});
 </script>
 </body>
